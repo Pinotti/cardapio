@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vida Saudável Lanches</title>
+  <style>
+    :root {
+      --ink: #2d2528;
+      --panel: #ffffff;
+      --soft-panel: #fff5f1;
+      --coral: #f95570;
+      --coral-dark: #db3f5b;
+      --cream: #fff9f3;
+      --white: #ffffff;
+      --green: #72bf39;
+      --mint: #edf9e7;
+      --gold: #c99941;
+      --muted: #6f6468;
+      --line: #f5d7d9;
+      --shadow: 0 18px 48px rgba(219, 63, 91, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        linear-gradient(180deg, rgba(249, 85, 112, .13), rgba(255, 249, 243, .78) 34%, rgba(237, 249, 231, .62) 100%),
+        var(--cream);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 44px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(255, 245, 241, .9)),
+        repeating-linear-gradient(45deg, rgba(249, 85, 112, .045) 0 1px, transparent 1px 15px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: clamp(128px, 20vw, 210px) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .brand-logo {
+      width: 100%;
+      aspect-ratio: 1;
+      display: block;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 18px 42px rgba(249, 85, 112, .24);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 600px;
+      font-size: clamp(2.35rem, 6vw, 5.1rem);
+      line-height: .9;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--coral-dark);
+    }
+
+    .subtitle {
+      max-width: 560px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .hero-panel {
+      width: 100%;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: 26px;
+      border-radius: 8px;
+      background:
+        linear-gradient(160deg, rgba(249, 85, 112, .96) 0%, rgba(219, 63, 91, .96) 100%),
+        var(--coral);
+      color: var(--white);
+      box-shadow: 0 18px 42px rgba(249, 85, 112, .22);
+    }
+
+    .hero-panel h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: rgba(255,255,255,.9);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .14);
+      color: var(--white);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .chip::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 34px 0 16px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      letter-spacing: 0;
+    }
+
+    .section-title span {
+      color: var(--coral-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: .78rem;
+      letter-spacing: .08em;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .item {
+      min-height: 228px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--panel), var(--soft-panel));
+      box-shadow: 0 10px 30px rgba(219, 63, 91, .08);
+    }
+
+    .item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 1.18rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: #3f8420;
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .price {
+      color: var(--coral-dark);
+      font-size: 1.3rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .combo-band {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 24px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--coral), #ff7388);
+      color: var(--ink);
+      box-shadow: 0 18px 46px rgba(249, 85, 112, .18);
+    }
+
+    .combo-band h3,
+    .combo-band p {
+      margin: 0;
+    }
+
+    .combo-band h3 {
+      color: var(--white);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .combo-band p {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .92);
+    }
+
+    .combo-price {
+      display: grid;
+      place-items: center;
+      width: 126px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      border: 6px solid rgba(255, 255, 255, .72);
+      font-size: 1.7rem;
+      font-weight: 900;
+      box-shadow: 0 16px 30px rgba(245, 82, 109, .28);
+    }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 28px;
+      padding: 20px 0 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 12px 24px rgba(83, 97, 255, .24);
+    }
+
+    @media (max-width: 860px) {
+      .combo-band {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 230px;
+      }
+
+      .combo-price {
+        width: 104px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        width: min(100% - 20px, 1120px);
+        padding-top: 10px;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .hero-top {
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 9vw, 2.8rem);
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .item {
+        min-height: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      main {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .item,
+      .combo-band {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .cta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-top">
+        <img class="brand-logo" src="vida-saudavel.jpg" alt="Logo oficial Vida Saudável Marmitaria">
+        <div>
+          <h1>Vida Saudável Lanches</h1>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Destaques do cardápio">
+        <h2>Leve, fresco e cheio de sabor</h2>
+        <p>Lanches naturais, wraps, bowls e sucos preparados para a rotina de quem quer comer bem sem perder o prazer da pausa.</p>
+        <div class="chips">
+          <span class="chip">Proteico</span>
+          <span class="chip">Natural</span>
+          <span class="chip">Delivery</span>
+        </div>
+      </aside>
+    </section>
+
+    <section aria-labelledby="lanches">
+      <div class="section-title">
+        <h2 id="lanches">Lanches Naturais</h2>
+        <span>Fictício</span>
+      </div>
+      <div class="menu-grid">
+        <article class="item">
+          <div>
+            <strong>Frango Cremoso Fit</strong>
+            <p>Pão integral, frango desfiado, creme de ricota, cenoura ralada, alface e tomate.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Mais pedido</span>
+            <span class="price">R$ 18</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Atum Tropical</strong>
+            <p>Atum temperado, iogurte natural, milho, pepino, folhas frescas e toque de limão.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Leve</span>
+            <span class="price">R$ 20</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Caprese Integral</strong>
+            <p>Muçarela de búfala, tomate, manjericão, pasta de castanhas e pão integral tostado.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Veggie</span>
+            <span class="price">R$ 19</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="wraps">
+      <div class="section-title">
+        <h2 id="wraps">Wraps e Bowls</h2>
+        <span>Equilíbrio</span>
+      </div>
+      <div class="menu-grid">
+        <article class="item">
+          <div>
+            <strong>Wrap Energia</strong>
+            <p>Tortilha integral, frango grelhado, mix de folhas, beterraba, cenoura e molho verde.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Proteico</span>
+            <span class="price">R$ 24</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Bowl Vida</strong>
+            <p>Arroz integral, grão-de-bico, frango, legumes assados, folhas e molho de ervas.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Completo</span>
+            <span class="price">R$ 29</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Salada Crocante</strong>
+            <p>Folhas verdes, manga, tomate-cereja, sementes, ricota temperada e vinagrete cítrico.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Fresh</span>
+            <span class="price">R$ 23</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="bebidas">
+      <div class="section-title">
+        <h2 id="bebidas">Sucos e Extras</h2>
+        <span>Sem culpa</span>
+      </div>
+      <div class="menu-grid">
+        <article class="item">
+          <div>
+            <strong>Suco Detox Verde</strong>
+            <p>Couve, abacaxi, hortelã, gengibre e água de coco batidos na hora.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Gelado</span>
+            <span class="price">R$ 12</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Vitamina Rosa</strong>
+            <p>Morango, banana, aveia, leite vegetal e mel, cremosa e naturalmente doce.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Coral</span>
+            <span class="price">R$ 15</span>
+          </div>
+        </article>
+        <article class="item">
+          <div>
+            <strong>Cookie de Aveia</strong>
+            <p>Cookie artesanal com aveia, cacau 70%, castanhas e gotas de chocolate.</p>
+          </div>
+          <div class="meta">
+            <span class="tag">Extra</span>
+            <span class="price">R$ 8</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="combo-band" aria-labelledby="combo">
+      <div>
+        <h3 id="combo">Combo do Dia</h3>
+        <p>Lanche natural de frango + suco detox verde + cookie de aveia. Ideal para almoço rápido ou lanche reforçado.</p>
+      </div>
+      <div class="combo-price">R$ 34</div>
+    </section>
+
+    <footer>
+      <span>@vidasaudavel.lanches • Cardápio fictício para demonstração visual</span>
+      <a class="cta" href="https://www.instagram.com/vidasaudavel.lanches/">Ver Instagram</a>
+    </footer>
+  </main>
+</body>
+</html>
